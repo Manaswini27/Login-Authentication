@@ -3,103 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
+    <title>Registration</title>
     <style>
-      .html{
-        background-image: url(./back.jpg);
-      }
         .container {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             text-align: center;
-            margin: 120px;
-          }
-          
-          .form_area {
+        }
+
+        .form_area {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-color: #eee7e6;
+            background-color: #EDDCD9;
             height: auto;
             width: auto;
             border: 2px solid #264143;
             border-radius: 20px;
-            box-shadow: 3px 4px 0px 1px #d6470e;
-          }
-          
-          .title {
+            box-shadow: 3px 4px 0px 1px #E99F4C;
+        }
+
+        .title {
             color: #264143;
             font-weight: 900;
             font-size: 1.5em;
             margin-top: 20px;
-          }
-          
-          .sub_title {
+        }
+
+        .sub_title {
             font-weight: 600;
             margin: 5px 0;
-          }
-          
-          .form_group {
+        }
+
+        .form_group {
             display: flex;
             flex-direction: column;
             align-items: baseline;
             margin: 10px;
-          }
-          body{background-size: cover;
-            background-image: url(./back.jpg);
-            background-repeat: no-repeat;
         }
-          
-          .form_style {
+
+        .form_style {
             outline: none;
             border: 2px solid #264143;
-            box-shadow: 3px 4px 0px 1px #b6493d;
+            box-shadow: 3px 4px 0px 1px #E99F4C;
             width: 290px;
             padding: 12px 10px;
             border-radius: 4px;
             font-size: 15px;
-            
-          }
-          
-          .form_style:focus, .btn:focus {
+        }
+
+        .form_style:focus, .btn:focus {
             transform: translateY(4px);
-            box-shadow: 1px 2px 0px 0px #b95d4f;
-          }
-          
-          .btn {
-            color: white;
+            box-shadow: 1px 2px 0px 0px #E99F4C;
+        }
+
+        .btn {
             padding: 15px;
             margin: 25px 0px;
             width: 290px;
             font-size: 15px;
-            background: #6f0606;
+            background: #DE5499;
             border-radius: 10px;
             font-weight: 800;
-            box-shadow: 3px 3px 0px 0px #b4532a;
-          }
-          
-          .btn:hover {
+            box-shadow: 3px 3px 0px 0px #E99F4C;
+        }
+
+        .btn:hover {
             opacity: .9;
-          }
-          
-          .link {
+        }
+
+        .link {
             font-weight: 800;
             color: #264143;
             padding: 5px;
-          }
-</style>
+        }
+        html{
+            background-image: url(./lock.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="form_area">
             <p class="title">SIGN UP</p>
-            <form >
+            <form id="signupForm">
                 <div class="form_group">
                     <label class="sub_title" for="name">Name</label>
-                    <input placeholder="Enter your full name" class="form_style" type="text">
+                    <input placeholder="Enter your full name" id="name" class="form_style" type="text">
                 </div>
                 <div class="form_group">
                     <label class="sub_title" for="email">Email</label>
@@ -110,23 +105,21 @@
                     <input placeholder="Enter your password" id="password" class="form_style" type="password">
                 </div>
                 <div>
-                    <button class="btn" id="idid">SIGN UP</button>
+                    <button type="button" class="btn" id="idid">SIGN UP</button>
                     <p>Have an Account? <a class="link" href="./login.html">Login Here!</a></p>
-                    </div>
+                </div>
             </form>
-          </div>
+        </div>
+    </div>
 
-      </div>
-</body>
-    
-<script type="module">
-      // Import the functions you need from the SDKs you need
-      
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-      import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-      // Your web app's Firebase configuration
+        // Your web app's Firebase configuration
         const firebaseConfig = {
       apiKey: "AIzaSyDV50rlug_64NE8EPaRMsgBdAxiu_abmO0",
       authDomain: "webproject-b223e.firebaseapp.com",
@@ -136,33 +129,33 @@
       appId: "1:760147096461:web:8d96793d9a2dd262f9c3c4"
     };
 
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
 
-      const auth = getAuth();
+        const auth = getAuth();
 
-      document.getElementById("idid").addEventListener("click", function() {
-    var email =  document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    //For new registration
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      console.log(user);
-      alert("Registration successfully!!");
-      window.location.href="./login.html";
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-      console.log(errorMessage);
-      alert(error);
-    });		  		  
-  });
-  </script>
+        document.getElementById("idid").addEventListener("click", function() {
+		  var email =  document.getElementById("email").value;
+		  var password = document.getElementById("password").value;
+		  //For new registration
+		  createUserWithEmailAndPassword(auth, email, password)
+		  .then((userCredential) => {
+		    // Signed in 
+		    const user = userCredential.user;
+		    console.log(user);
+		    alert("Registration successfully!!");
+            window.location.href="./login.html";
+		    // ...
+		  })
+		  .catch((error) => {
+		    const errorCode = error.code;
+		    const errorMessage = error.message;
+		    // ..
+		    console.log(errorMessage);
+		    alert(error);
+		  });		  		  
+	  });
+    </script>
 </body>
 </html>

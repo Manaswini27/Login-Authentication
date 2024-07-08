@@ -9,8 +9,8 @@
     <h1>Thank you!</h1>
     <p>Thank you for registering to be a user on our platform.</p>
     <p>You have succesfully logged out.</p>
-    <button>
-        <span class="button_top">Log out
+    <button id="logout">
+        <span class="button_top " >Log out
         </span>
       </button>
 </button>
@@ -72,42 +72,38 @@
 </body>
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDV50rlug_64NE8EPaRMsgBdAxiu_abmO0",
-  authDomain: "webproject-b223e.firebaseapp.com",
-  projectId: "webproject-b223e",
-  storageBucket: "webproject-b223e.appspot.com",
-  messagingSenderId: "760147096461",
-  appId: "1:760147096461:web:8d96793d9a2dd262f9c3c4"
+ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+ const firebaseConfig = {
+ apiKey: "AIzaSyDV50rlug_64NE8EPaRMsgBdAxiu_abmO0",
+ authDomain: "webproject-b223e.firebaseapp.com",
+ projectId: "webproject-b223e",
+ storageBucket: "webproject-b223e.appspot.com",
+ messagingSenderId: "760147096461",
+ appId: "1:760147096461:web:8d96793d9a2dd262f9c3c4"
 };
 
 
-const app = initializeApp(firebaseConfig);
-const analytics=getAnalytics(app);
-import { getAuth, signOut } from "firebase/auth";//initializing the firebase here//
+     // Initialize Firebase
+     const app = initializeApp(firebaseConfig);
+     const analytics = getAnalytics(app);
+     const auth = getAuth();
+     console.log(app);
 
-const auth = getAuth();
+
+     document.getElementById("logout").addEventListener("click",function(){
+       
 signOut(auth).then(() => {
-    console.log("logged out succesfully");
-    alert("logged out successfully");
-
-    window.location.href="./index.html";
-  // Sign-out successful.
+ console.log("signed out");
+ alert("signed out successfully");
+ window.location.href="./index.html";
 }).catch((error) => {
-    var emsg=error.message;
-    var code=error.code;
-    console.log(emsg);
-    alert(emsg)
-  // An error happened.
+ var emessage=error.message;
+ var code=error.code;
+ console.log(emessage);
+ alert(emessage);
 });
-</script>
 
+     });
+</script>
 </html>
