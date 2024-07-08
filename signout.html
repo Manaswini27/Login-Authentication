@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signout</title>
+</head>
+<body>
+    <h1>Thank you!</h1>
+    <p>Thank you for registering to be a user on our platform.</p>
+    <p>You have succesfully logged out.</p>
+    <button>
+        <span class="button_top">Log out
+        </span>
+      </button>
+</button>
+
+<style>
+    body{
+        background-image:url(./back.jpg);
+        color: white;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    h1{
+        font-size: larger;
+        justify-content: center;
+       margin-top: 200px;
+       margin-left: 500px;
+       font-size: 120px;;
+    }
+    p{
+      justify-content: center;
+      margin-left: 600px;
+    }
+    button {
+        /* Variables */
+        --button_radius: 0.75em;
+        --button_color: #e8e8e8;
+        --button_outline_color: #000000;
+        font-size: 17px;
+        font-weight: bold;
+        border: none;
+        border-radius: var(--button_radius);
+        background: var(--button_outline_color);
+        margin-left:  625px;
+        margin-top: 50px;
+      }
+      
+      .button_top {
+        display: block;
+        box-sizing: border-box;
+        border: 2px solid var(--button_outline_color);
+        border-radius: var(--button_radius);
+        padding: 0.75em 1.5em;
+        background: var(--button_color);
+        color: var(--button_outline_color);
+        transform: translateY(-0.2em);
+        transition: transform 0.1s ease;
+      }
+      
+      button:hover .button_top {
+        /* Pull the button upwards when hovered */
+        transform: translateY(-0.33em);
+      }
+      
+      button:active .button_top {
+        /* Push the button downwards when pressed */
+        transform: translateY(0);
+      }
+</style>
+</body>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDV50rlug_64NE8EPaRMsgBdAxiu_abmO0",
+  authDomain: "webproject-b223e.firebaseapp.com",
+  projectId: "webproject-b223e",
+  storageBucket: "webproject-b223e.appspot.com",
+  messagingSenderId: "760147096461",
+  appId: "1:760147096461:web:8d96793d9a2dd262f9c3c4"
+};
+
+
+const app = initializeApp(firebaseConfig);
+const analytics=getAnalytics(app);
+import { getAuth, signOut } from "firebase/auth";//initializing the firebase here//
+
+const auth = getAuth();
+signOut(auth).then(() => {
+    console.log("logged out succesfully");
+    alert("logged out successfully");
+
+    window.location.href="./index.html";
+  // Sign-out successful.
+}).catch((error) => {
+    var emsg=error.message;
+    var code=error.code;
+    console.log(emsg);
+    alert(emsg)
+  // An error happened.
+});
+</script>
+
+</html>
